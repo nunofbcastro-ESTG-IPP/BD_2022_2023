@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-CU5-ubuntu-20.04
+    platform: linux/amd64
+    ports:
+      - '1434:1433'
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Password_BD
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets
+      - ./backups:/var/backups
